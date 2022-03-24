@@ -43,7 +43,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
 
     // Hàm get data for Product List
     const getDataForProductList = async () => {
-        axios.get(`http://localhost:8888/products?skip=${pageProduct}&limit=9`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products?skip=${pageProduct}&limit=9`)
             .then((data) => {
                 setNoPageProduct(data.data.pages)
                 setDataForProductList(data.data.products)
@@ -55,7 +55,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
 
     // Hàm get data for HomePage
     const getDataForHomePage = async () => {
-        axios.get(`http://localhost:8888/products`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products`)
             .then((data) => {
                 setDataProduct(data.data.products)
                 // Lấy brand New cho HomePage
@@ -70,7 +70,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
 
     // Hàm get data By Type
     const restAptGetProductByType = (paramType) => {
-        axios.get(`http://localhost:8888/products/type/${paramType}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products/type/${paramType}`)
             .then((data) => {
                 setNoPageProduct(Math.ceil(data.data.product.length / 9))
                 setDataForProductList(data.data.product.slice((pageProduct - 1) * 9, pageProduct * 9))
@@ -79,7 +79,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
 
     //  Hàm get data by Type có sắp xếp
     const restAptGetProductByTypeAndSort = (paramType, paramSort) => {
-        axios.get(`http://localhost:8888/products/type/${paramType}/${paramSort}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products/type/${paramType}/${paramSort}`)
             .then((data) => {
                 setNoPageProduct(Math.ceil(data.data.product.length / 9))
                 setDataForProductList(data.data.product.slice((pageProduct - 1) * 9, pageProduct * 9))

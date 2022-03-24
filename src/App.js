@@ -79,7 +79,7 @@ function App() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     }
-    axios.post('http://localhost:8888/customers', body.body, body.headers)
+    axios.post('https://computer-tech-be.herokuapp.com/customers', body.body, body.headers)
       .then(() => {
         toast.success('Đăng ký thành công');
         setTimeout(() => window.location.assign("/"), 3000)
@@ -91,7 +91,7 @@ function App() {
   }
 
   const restApiCheckData = () => {
-    axios.get(`http://localhost:8888/customers/checkdata`)
+    axios.get(`https://computer-tech-be.herokuapp.com/customers/checkdata`)
       .then((data) => {
         for (let i in data.data.customer) {
           let email = data.data.customer[i].Email
@@ -104,7 +104,7 @@ function App() {
   }
 
   const restApiGetId = (email) => {
-    axios.get(`http://localhost:8888/customers/getIdByEmail/${email}`)
+    axios.get(`https://computer-tech-be.herokuapp.com/customers/getIdByEmail/${email}`)
       .then((data) => {
         setIdUser(data.data.customer[0]._id)
       })
@@ -114,7 +114,7 @@ function App() {
   }
 
   const restApiGetIdByUsername = (paramUserName) => {
-    axios.get(`http://localhost:8888/customers/getIdByUsername/${paramUserName}`)
+    axios.get(`https://computer-tech-be.herokuapp.com/customers/getIdByUsername/${paramUserName}`)
       .then((data) => {
         setIdUser(data.data.customer[0]._id)
       })
@@ -124,7 +124,7 @@ function App() {
   }
 
   const login = () => {
-    axios.get(`http://localhost:8888/customers/checkdata/${userName}`)
+    axios.get(`https://computer-tech-be.herokuapp.com/customers/checkdata/${userName}`)
       .then((data) => {
         if (data.data.customer[0].Password == password) {
           toast.success('Đăng nhập thành công')
@@ -142,7 +142,7 @@ function App() {
   }
   // Hàm rest api lấy data
   const getCartByIdUser = async () => {
-    axios.get(`http://localhost:8888/customers/${idUser}/cart`)
+    axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}/cart`)
       .then((data) => {
         setArrCart(data.data.Carts)
         setCartLength(data.data.Carts.length)

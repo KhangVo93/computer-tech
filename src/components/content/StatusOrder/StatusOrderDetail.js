@@ -42,7 +42,7 @@ function StatusOrderDetail() {
         sumPrice += priceProduct
     }
     const restApiGetOrderDetailById = async () => {
-        axios.get(`http://localhost:8888/orders/${orderId}/orderDetail`)
+        axios.get(`https://computer-tech-be.herokuapp.com/orders/${orderId}/orderDetail`)
             .then((data) => {
                 setArrOrderDetailById(data.data.Order)
             })

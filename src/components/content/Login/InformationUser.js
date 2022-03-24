@@ -26,7 +26,7 @@ function InformationUser() {
     let year = d.getFullYear();
 
     const restApiGetUserById = () => {
-        axios.get(`http://localhost:8888/customers/${userId}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${userId}`)
             .then((data) => {
                 setObjUser(data.data.customer)
                 setEmail(data.data.customer.Email)
@@ -123,7 +123,7 @@ function InformationUser() {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.put(`http://localhost:8888/customers/${userId}`, body.body, body.headers)
+        axios.put(`https://computer-tech-be.herokuapp.com/customers/${userId}`, body.body, body.headers)
             .then(() => {
                 toast.success('Cập nhật thành công');
                 restApiGetUserById()
@@ -181,7 +181,7 @@ function InformationUser() {
     }
 
     const restApiCheckData = () => {
-        axios.get(`http://localhost:8888/customers/`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/`)
             .then((data) => {
                 for (let i in data.data.customer) {
                     let soDienThoai = data.data.customer[i].PhoneNumber

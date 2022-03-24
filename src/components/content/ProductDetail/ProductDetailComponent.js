@@ -22,7 +22,7 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
 
     // Hàm rest api lấy sản phẩm cùng loại
     const getDataByType = async (paramType) => {
-        axios.get(`http://localhost:8888/products/type/${paramType}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products/type/${paramType}`)
             .then((data) => {
                 setArrByType(data.data.product)
             })
@@ -33,7 +33,7 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
 
     // Hàm rest api lấy data
     const getDataById = async () => {
-        axios.get(`http://localhost:8888/products/${_id}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products/${_id}`)
             .then((data) => {
                 setARR(data.data.product)
                 getDataByType(data.data.product.Type)

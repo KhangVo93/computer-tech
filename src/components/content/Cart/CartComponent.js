@@ -39,7 +39,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
         sumPrice += priceProduct
     }
     const onClickDeleteItem = (paramID) => {
-        axios.delete(`http://localhost:8888/customers/${idUser}/${paramID}/cart`)
+        axios.delete(`https://computer-tech-be.herokuapp.com/customers/${idUser}/${paramID}/cart`)
             .then(() => {
                 getCartByIdUser()
                 //window.location.assign('/cart')
@@ -50,7 +50,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
     }
 
     const getCartByIdUser = async () => {
-        axios.get(`http://localhost:8888/customers/${idUser}/cart`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}/cart`)
             .then((data) => {
                 setArrCart(data.data.Carts)
                 setCartLength(data.data.Carts.length)
@@ -69,7 +69,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.put(`http://localhost:8888/cart/${paramCart._id}`, body.body, body.headers)
+        axios.put(`https://computer-tech-be.herokuapp.com/cart/${paramCart._id}`, body.body, body.headers)
             .then(() => {
                 getCartByIdUser()
             })
@@ -88,7 +88,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             }
-            axios.put(`http://localhost:8888/cart/${paramCart._id}`, body.body, body.headers)
+            axios.put(`https://computer-tech-be.herokuapp.com/cart/${paramCart._id}`, body.body, body.headers)
                 .then(() => {
                     getCartByIdUser()
                 })

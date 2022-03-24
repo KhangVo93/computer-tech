@@ -32,7 +32,7 @@ function StatusOrderComponent({ idUser }) {
     const [search, setSearch] = useState('')
 
     const restApiGetOrderById = () => {
-        axios.get(`http://localhost:8888/customers/${idUser}/orders`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}/orders`)
             .then((data) => {
                 setArrOrderById(data.data.Order)
             })

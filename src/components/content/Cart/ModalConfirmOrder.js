@@ -50,7 +50,7 @@ function ModalConfirmOrder({
     }
 
     const restApiDeleteOrderById = () => {
-        axios.delete(`http://localhost:8888/customers/${idUser}/${orderId}/orders`)
+        axios.delete(`https://computer-tech-be.herokuapp.com/customers/${idUser}/${orderId}/orders`)
             .then(() => {
                 setOrderId(null)
             })
@@ -71,7 +71,7 @@ function ModalConfirmOrder({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.post(`http://localhost:8888/orders/${orderId}/${param.productId}/orderDetail`, body.body, body.headers)
+        axios.post(`https://computer-tech-be.herokuapp.com/orders/${orderId}/${param.productId}/orderDetail`, body.body, body.headers)
             .then(() => {
 
             })
@@ -81,7 +81,7 @@ function ModalConfirmOrder({
     }
 
     const getCartByIdUser = async () => {
-        axios.get(`http://localhost:8888/customers/${idUser}/cart`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}/cart`)
             .then((data) => {
                 setArrCart(data.data.Carts)
                 setCartLength(data.data.Carts.length)
@@ -92,7 +92,7 @@ function ModalConfirmOrder({
     }
 
     const restApiDeleteCartById = (paramID) => {
-        axios.delete(`http://localhost:8888/customers/${idUser}/${paramID._id}/cart`)
+        axios.delete(`https://computer-tech-be.herokuapp.com/customers/${idUser}/${paramID._id}/cart`)
             .then(() => {
                 getCartByIdUser()
             })
@@ -103,7 +103,7 @@ function ModalConfirmOrder({
 
     // Rest API lấy số lượng sản phẩm hiện tại
     const restAPIGetQuantityProductById = (param) => {
-        axios.get(`http://localhost:8888/products/${param.productId}/quantity`)
+        axios.get(`https://computer-tech-be.herokuapp.com/products/${param.productId}/quantity`)
             .then((data) => {
                 if (param.amount > data.data.product.Quantity) {
                     toast.error('Không đủ số lượng sản phẩm')
@@ -133,7 +133,7 @@ function ModalConfirmOrder({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.put(`http://localhost:8888/products/${param.productId}`, body.body, body.headers)
+        axios.put(`https://computer-tech-be.herokuapp.com/products/${param.productId}`, body.body, body.headers)
             .then(() => {
                 //console.log('OK')
             })

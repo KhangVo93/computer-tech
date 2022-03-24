@@ -66,7 +66,7 @@ function ModalInfor({
     }
 
     const restApiCheckData = () => {
-        axios.get(`http://localhost:8888/customers/`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/`)
             .then((data) => {
                 for (let i in data.data.customer) {
                     let soDienThoai = data.data.customer[i].PhoneNumber
@@ -121,7 +121,7 @@ function ModalInfor({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.put(`http://localhost:8888/customers/${idUser}`, body.body, body.headers)
+        axios.put(`https://computer-tech-be.herokuapp.com/customers/${idUser}`, body.body, body.headers)
             .then(() => {
                 toast.success('Cập nhật thành công');
                 restApiGetUserById()
@@ -134,7 +134,7 @@ function ModalInfor({
     }
 
     const restApiGetUserById = () => {
-        axios.get(`http://localhost:8888/customers/${idUser}`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}`)
             .then((data) => {
                 setName(data.data.customer.FullName)
                 setEmail(data.data.customer.Email)
@@ -164,7 +164,7 @@ function ModalInfor({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.post(`http://localhost:8888/customers/${idUser}/orders`, body.body, body.headers)
+        axios.post(`https://computer-tech-be.herokuapp.com/customers/${idUser}/orders`, body.body, body.headers)
             .then((data) => {
                 /*  - Nếu userId đó chưa có đơn hàng nào thì khi tạo lúc này sẽ có 1 đơn hàng, 
                             ta sẽ dùng orderId đó thực hiện tiếp
@@ -183,7 +183,7 @@ function ModalInfor({
     }
 
     const restApiDeleteOrderById = () => {
-        axios.delete(`http://localhost:8888/customers/${idUser}/${orderId}/orders`)
+        axios.delete(`https://computer-tech-be.herokuapp.com/customers/${idUser}/${orderId}/orders`)
             .then(() => {
                 setOrderId(null)
             })

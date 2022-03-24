@@ -45,7 +45,7 @@ function ProductInformation({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.post(`http://localhost:8888/customers/${idUser}/${idProduct}/cart`, body.body, body.headers)
+        axios.post(`https://computer-tech-be.herokuapp.com/customers/${idUser}/${idProduct}/cart`, body.body, body.headers)
             .then(() => {
                 //toast.success('Thêm vào giỏ thành công');
                 setCartLength(cartLength + 1)
@@ -59,7 +59,7 @@ function ProductInformation({
     }
 
     const getCartByIdUser = async () => {
-        axios.get(`http://localhost:8888/customers/${idUser}/cart`)
+        axios.get(`https://computer-tech-be.herokuapp.com/customers/${idUser}/cart`)
             .then((data) => {
                 setArrCart(data.data.Carts)
             })
@@ -77,7 +77,7 @@ function ProductInformation({
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        axios.put(`http://localhost:8888/cart/${paramCart._id}`, body.body, body.headers)
+        axios.put(`https://computer-tech-be.herokuapp.com/cart/${paramCart._id}`, body.body, body.headers)
             .then(() => {
                 getCartByIdUser()
                 //toast.success('cập nhật thành công');

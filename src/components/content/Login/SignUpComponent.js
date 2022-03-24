@@ -4,7 +4,10 @@ import axios from 'axios';
 import { FormControl, MenuItem, Select, TextField } from '@mui/material'
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'
 function SignUpComponent() {
+
+    let navigate = useNavigate();
     // Các trường input
     const [tenDangNhap, setTenDangNhap] = useState(null)
     const [matKhau, setMatKhau] = useState(null)
@@ -20,7 +23,7 @@ function SignUpComponent() {
     const [arrSoDienThoai, setArrSoDienThoai] = useState([])
     const [arrEmail, setArrEmail] = useState([])
 
-    const [disabledDistrict, setDisableDistrict] = useState(true) 
+    const [disabledDistrict, setDisableDistrict] = useState(true)
     let d = new Date()
     let day = d.getDate();
     let month = d.getMonth() + 1;
@@ -158,7 +161,8 @@ function SignUpComponent() {
         axios.post('https://computer-tech-be.herokuapp.com/customers', body.body, body.headers)
             .then(() => {
                 toast.success('Đăng ký thành công');
-                setTimeout(() => window.location.reload(), 3500)
+                navigate('/');
+                //setTimeout(() => window.location.reload(), 3500)
             })
             .catch(error => {
                 toast.error('Đăng ký thất bại thất bại!!!');
@@ -291,12 +295,12 @@ function SignUpComponent() {
                             <Col xs='8'>
                                 <FormControl >
                                     <Select variant='standard'
-                                        labelId="select-standard-label-district" 
+                                        labelId="select-standard-label-district"
                                         style={{ width: 170 }}
-                                        onChange={onChangeDistrict} 
+                                        onChange={onChangeDistrict}
                                         value={district}
                                         disabled={disabledDistrict}
-                                        >
+                                    >
                                         <MenuItem value='quan1'>Quận 1</MenuItem>
                                         <MenuItem value='quan2'>Quận 2</MenuItem>
                                         <MenuItem value='quan3'>Quận 3</MenuItem>

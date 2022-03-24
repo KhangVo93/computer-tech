@@ -179,8 +179,14 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
                         :
                         <>
 
-                            <Col xs='6'>
-                                <h3>Giỏ hàng trống</h3>
+                            <Col xs='12' style={{ textAlign: 'center' }}>
+                                <img src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png' style={{ maxWidth: 200, maxHeight: 200 }} alt='imgCart' />
+                                <h3>Giỏ hàng của bạn trống</h3>
+                                <Link to={'/products'} style={{ textDecoration: 'none' }}>
+                                    <Button variant="contained" color='warning'>
+                                        Mua ngay
+                                    </Button>
+                                </Link>
                             </Col>
                         </>
                 }

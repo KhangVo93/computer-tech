@@ -27,21 +27,18 @@ function SocialFooterComponent() {
                     </Row>
                 </Col>
             </Row>
-            <Row className="mt-2 p-2">
-                <Col xs='4'></Col>
-                <Col xs='4'>
+
+            <Row>
+                <Col>
                     <Row>
-                        <Col>
-                            <FacebookIcon style={{ marginRight: 15, width: 30, height: 30 }} /></Col>
-                        <Col>
-                            <InstagramIcon style={{ marginRight: 15, width: 30, height: 30 }} /></Col>
-                        <Col>
-                            <YouTubeIcon style={{ marginRight: 15, width: 30, height: 30 }} /></Col>
-                        <Col>
-                            <TwitterIcon style={{ marginRight: 15, width: 30, height: 30 }} /></Col>
+                        <h1>
+                            <FacebookIcon style={{ marginRight: 15, width: 30, height: 30 }} />
+                            <InstagramIcon style={{ marginRight: 15, width: 30, height: 30 }} />
+                            <YouTubeIcon style={{ marginRight: 15, width: 30, height: 30 }} />
+                            <TwitterIcon style={{  width: 30, height: 30 }} />
+                        </h1>
                     </Row>
                 </Col>
-                <Col xs='4'></Col>
             </Row>
         </>
     );

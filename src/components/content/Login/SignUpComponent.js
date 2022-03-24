@@ -228,7 +228,7 @@ function SignUpComponent() {
                                 <Label>Mật khẩu<span style={{ color: 'red' }}> (*)</span></Label>
                             </Col>
                             <Col xs='8'>
-                                <TextField variant='standard' inputProps={{ maxLength: 12 }} onChange={onChangeMatKhau} ></TextField>
+                                <TextField variant='standard' type="password" inputProps={{ maxLength: 12 }} onChange={onChangeMatKhau} ></TextField>
                             </Col>
                         </Row>
                     </FormGroup>

@@ -95,7 +95,7 @@ function StatusOrderDetail() {
                                                     {item.Product}
                                                 </Link>
                                             </StyledTableCell>
-                                            <StyledTableCell align="center"><img src={item.ImgUrl} style={{ width: '50%' }} alt='imgUrl' /></StyledTableCell>
+                                            <StyledTableCell align="center"><img src={item.ImgUrl} style={{ maxWidth: 200, maxHeight: 200 }} alt='imgUrl' /></StyledTableCell>
                                             <StyledTableCell align="center">{item.Name}</StyledTableCell>
                                             <StyledTableCell align="center">{item.Quantity}</StyledTableCell>
                                             <StyledTableCell align="center">{item.PriceEach.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')} VNĐ</StyledTableCell>

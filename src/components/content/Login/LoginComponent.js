@@ -23,12 +23,12 @@ function LoginComponent({ loginGoogle, setUserName, setPassword, login, userName
             login()
         }
     }
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
-    })
+    // useEffect(() => {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: "smooth"
+    //     })
+    // })
     return (
         <>
             <div style={{ textAlign: 'center' }}>

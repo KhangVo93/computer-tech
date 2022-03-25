@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Label, Row, Breadcrumb, BreadcrumbItem, Col } from "reactstrap"
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import ModalInfor from "./ModalInfor"
 
 function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }) {
@@ -60,6 +62,21 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
             })
     }
 
+    const restAPIGetQuantityProductById = (paramCart) => {
+        axios.get(`https://computer-tech-be.herokuapp.com/products/${paramCart.productId}/quantity`)
+            .then((data) => {
+                if ((paramCart.amount + 1) >= data.data.product.Quantity) {
+                    toast.error('Số lượng trong kho không đủ')
+                }
+                else {
+                    restApiAddQuantity(paramCart)
+                }
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+    }
+
     const restApiAddQuantity = (paramCart) => {
         const body = {
             body: {
@@ -99,6 +116,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
     }
 
     const [openModalInfor, setOpenModalInfor] = useState(false)
+
     return (
 
         <>
@@ -132,13 +150,13 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
                                                 <StyledTableRow key={index}>
                                                     <StyledTableCell width={'25%'} align='center'>
                                                         <Link to={`/detailProduct/${item.productId}`}>
-                                                            <img src={item.imgAvatar} style={{ maxWidth: '50%' }} alt='avatarproduct' />
+                                                            <img src={item.imgAvatar} style={{ maxWidth: 200, maxHeight: 200 }} alt='avatarproduct' />
                                                         </Link>
                                                     </StyledTableCell>
                                                     <StyledTableCell variant="body" width={'20%'} align='center'><b>{item.productId}</b></StyledTableCell>
                                                     <StyledTableCell width={'20%'} align='center'><b>{item.name}</b></StyledTableCell>
                                                     <StyledTableCell width={'20%'} align='center'>
-                                                        <Button onClick={() => restApiAddQuantity(item)}><b>+</b></Button>
+                                                        <Button onClick={() => restAPIGetQuantityProductById(item)}><b>+</b></Button>
                                                         <Label>
                                                             <b>{item.amount}</b>
                                                         </Label>
@@ -191,6 +209,7 @@ function CartComponent({ aRRCart, setArrCart, idUser, setCartLength, objResult }
                         </>
                 }
             </Row>
+            <ToastContainer />
             <ModalInfor
                 objResult={objResult}
                 idUser={idUser}

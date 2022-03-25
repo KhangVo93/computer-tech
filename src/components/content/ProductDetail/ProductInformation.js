@@ -104,6 +104,13 @@ function ProductInformation({
         }
     }
 
+    useEffect(() => {
+        for (let i in aRRCart) {
+            if (aRRCart[i].productId === idProduct) {
+                setCount(aRRCart[i].amount)
+            }
+        }
+    },[idProduct])
     return (
         <>
             <div>
@@ -156,8 +163,8 @@ function ProductInformation({
                                                 <Button style={{ width: 150 }} id='btnButton1' className='btn-danger' onClick={onClickAddCartByCustomerId}>Thêm vào giỏ</Button>
                                                 :
                                                 <>
-                                                <pre>(Hết hàng)</pre>
-                                                <Button style={{ width: 150 }} id='btnButton1'  >Hết hàng</Button>
+                                                    <pre>(Hết hàng)</pre>
+                                                    <Button style={{ width: 150 }} id='btnButton1'  >Hết hàng</Button>
                                                 </>
 
                                         }

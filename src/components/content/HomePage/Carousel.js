@@ -1,12 +1,18 @@
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
 import { Carousel } from 'react-responsive-carousel';
 import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 function CarouselComponent({ dataArr }) {
     return (
         <>
-            <Carousel autoPlay={true} showThumbs={false} showArrows={true} infiniteLoop={true}>
+            <Carousel
+                autoPlay={true}
+                showThumbs={false}
+                showArrows={false}
+                infiniteLoop={true}
+            >
                 {dataArr.map((element, index) => {
                     return (
                         <Link to={`/detailProduct/${element._id}`} key={index} style={{ textDecoration: 'none', color: 'black' }}>

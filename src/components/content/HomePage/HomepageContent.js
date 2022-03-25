@@ -3,7 +3,8 @@ import LastestProducts from "../HomePage/LastestProducts";
 import PaginationComponent from './PaginationComponent.js'
 import ViewAllComponent from './ViewAll';
 import { useEffect, useState } from 'react'
-import { Button } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 function HomepageContent({ dataArr, setPage, page, nopage, arrNew }) {
 
     const loadDataByBrandHot = () => {
@@ -31,7 +32,7 @@ function HomepageContent({ dataArr, setPage, page, nopage, arrNew }) {
             behavior: 'smooth' // for smoothly scrolling
         });
     };
-    
+
     return (
         <>
             <Carousel dataArr={loadDataByBrandHot()} />

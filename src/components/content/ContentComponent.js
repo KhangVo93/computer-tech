@@ -11,6 +11,7 @@ import SignUpComponent from "./Login/SignUpComponent"
 import StatusOrderComponent from "./StatusOrder/StatusOrderComponent"
 import StatusOrderDetail from "./StatusOrder/StatusOrderDetail"
 import InformationUser from "./Login/InformationUser"
+import ProductByType from "./Type/ProductByType"
 function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCart, cartLength, setArrCart, setUserName, setPassword, login, userName, password }) {
     // Dữ liệu tổng của Data API
     const [dataProduct, setDataProduct] = useState([])
@@ -132,6 +133,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
                     <Route exact path="/statusOrder" element={<StatusOrderComponent idUser={idUser} />} />
                     <Route exact path="/statusOrderDetail/:orderId" element={<StatusOrderDetail />} />
                     <Route exact path="/user/:userId" element={<InformationUser />} />
+                    <Route exact path="/productByType/:type" element={<ProductByType />}/>
                 </Routes>
             </div>
         </>

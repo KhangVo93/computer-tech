@@ -1,11 +1,11 @@
 import { Collapse } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { Col, Row, Button } from "reactstrap";
-import BreadcrumbComponent from "../Products/BreadcrumbComponent";
+import { Col, Row, Button, Breadcrumb } from "reactstrap";
 import ProductConnection from "./ProductConnection";
 import ProductDescription from "./ProductDescription";
 import ProductInformation from "./ProductInformation";
+import BreadcrumbProductDetail from './BreadcrumbProductDetail'
 import axios from "axios";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -93,7 +93,7 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
     return (
         <>
             <Row className="mt-2 p-2">
-                <BreadcrumbComponent arrName={aRR.Name} />
+                <BreadcrumbProductDetail arr={aRR} />
             </Row>
             <Row className="m-2 p-2">
                 <ProductInformation setArrCart={setArrCart} arrDetailProduct={aRR} aRRCart={aRRCart} setCartLength={setCartLength} cartLength={cartLength} idUser={idUser} idProduct={_id} />

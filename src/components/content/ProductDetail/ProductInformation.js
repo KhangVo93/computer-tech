@@ -110,71 +110,140 @@ function ProductInformation({
                 setCount(aRRCart[i].amount)
             }
         }
-    },[idProduct])
+
+    }, [idProduct])
     return (
         <>
             <div>
                 <Row className="mt-4 p-4">
-                    <Col xs='4'>
-                        <Carousel autoPlay={true} showThumbs={true} showArrows={true} infiniteLoop={true}>
-                            <div className="zoom">
-                                <img src={arrDetailProduct.ImageUrl} alt='imageProduct' />
-                            </div>
-                            {   // Nếu mảng có dữ liệu thì map ra các hình ảnh của sản phẩm
-                                arr ? arr.map((item, index) => {
-                                    return (
-                                        <div key={index} className="zoom">
-                                            <img src={item} alt='imageProduct' />
+                    {
+                        window.innerWidth > 700 ?
+
+                            <>
+                                <Col xs='4'>
+                                    <Carousel autoPlay={true} showThumbs={true} showArrows={true} infiniteLoop={true}>
+                                        <div className="zoom">
+                                            <img src={arrDetailProduct.ImageUrl} alt='imageProduct' />
                                         </div>
-                                    )
-                                })
-                                    // Nếu không thì cho mảng trống 
-                                    : <div>{arr = []}</div>
-                            }
-                        </Carousel>
-                    </Col>
-                    <Col xs='8'>
-                        <Row className="mt-2">
-                            <h1>{arrDetailProduct.Name}</h1>
-                        </Row>
-                        <hr />
-                        <Row className="mt-2">
-                            Giá niêm yết : <h3><del>{arrDetailProduct.BuyPrice ? arrDetailProduct.BuyPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.BuyPrice} VNĐ</del></h3>
-                        </Row>
-                        <Row className="mt-2">
-                            Giá giảm: <h3><span className="promotion-price">{arrDetailProduct.PromotionPrice ? arrDetailProduct.PromotionPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.PromotionPrice} VNĐ</span></h3>
-                        </Row>
-                        <Row className="mt-2 text-center">
-                            <Button style={{ width: 42 }} onClick={() => setCount(count + 1)}>
-                                <AddIcon />
-                            </Button>
-                            <Input value={count} className='text-center' style={{ width: 45 }} readOnly></Input>
-                            <Button style={{ width: 42 }} onClick={setCountDecrease}>
-                                <RemoveIcon />
-                            </Button>
-                        </Row>
-                        <Row className="mt-2">
-
-                            {
-                                idUser ?
-                                    <>
-                                        {
-                                            count < arrDetailProduct.Quantity ?
-                                                <Button style={{ width: 150 }} id='btnButton1' className='btn-danger' onClick={onClickAddCartByCustomerId}>Thêm vào giỏ</Button>
-                                                :
-                                                <>
-                                                    <pre>(Hết hàng)</pre>
-                                                    <Button style={{ width: 150 }} id='btnButton1'  >Hết hàng</Button>
-                                                </>
-
+                                        {   // Nếu mảng có dữ liệu thì map ra các hình ảnh của sản phẩm
+                                            arr ? arr.map((item, index) => {
+                                                return (
+                                                    <div key={index} className="zoom">
+                                                        <img src={item} alt='imageProduct' />
+                                                    </div>
+                                                )
+                                            })
+                                                // Nếu không thì cho mảng trống 
+                                                : <div>{arr = []}</div>
                                         }
-                                    </>
-                                    // <Link to={"/cart"} className="btn btn-danger" style={{ maxWidth: 150 }}>Thêm vào giỏ</Link>
-                                    :
-                                    <Link to={"/login"} className="btn btn-danger" style={{ width: 150 }}>Thêm vào giỏ</Link>
-                            }
-                        </Row>
-                    </Col>
+                                    </Carousel>
+                                </Col>
+                                <Col xs='8'>
+                                    <Row className="mt-2">
+                                        <h1>{arrDetailProduct.Name}</h1>
+                                    </Row>
+                                    <hr />
+                                    <Row className="mt-2">
+                                        Giá niêm yết : <h3><del>{arrDetailProduct.BuyPrice ? arrDetailProduct.BuyPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.BuyPrice} VNĐ</del></h3>
+                                    </Row>
+                                    <Row className="mt-2">
+                                        Giá giảm: <h3><span className="promotion-price">{arrDetailProduct.PromotionPrice ? arrDetailProduct.PromotionPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.PromotionPrice} VNĐ</span></h3>
+                                    </Row>
+                                    <Row className="mt-2 text-center">
+                                        <Button style={{ width: 42 }} onClick={() => setCount(count + 1)}>
+                                            <AddIcon />
+                                        </Button>
+                                        <Input value={count} className='text-center' style={{ width: 45 }} readOnly></Input>
+                                        <Button style={{ width: 42 }} onClick={setCountDecrease}>
+                                            <RemoveIcon />
+                                        </Button>
+                                    </Row>
+                                    <Row className="mt-2">
+
+                                        {
+                                            idUser ?
+                                                <>
+                                                    {
+                                                        count < arrDetailProduct.Quantity ?
+                                                            <Button style={{ width: 150 }} id='btnButton1' className='btn-danger' onClick={onClickAddCartByCustomerId}>Thêm vào giỏ</Button>
+                                                            :
+                                                            <>
+                                                                <pre>(Hết hàng)</pre>
+                                                                <Button style={{ width: 150 }} id='btnButton1'  >Hết hàng</Button>
+                                                            </>
+
+                                                    }
+                                                </>
+                                                // <Link to={"/cart"} className="btn btn-danger" style={{ maxWidth: 150 }}>Thêm vào giỏ</Link>
+                                                :
+                                                <Link to={"/login"} className="btn btn-danger" style={{ width: 150 }}>Thêm vào giỏ</Link>
+                                        }
+                                    </Row>
+                                </Col>
+                            </>
+                            :
+                            <>
+                                <Col xs='12'>
+                                    <Carousel autoPlay={true} showThumbs={true} showArrows={true} infiniteLoop={true}>
+                                        <div className="zoom">
+                                            <img src={arrDetailProduct.ImageUrl} alt='imageProduct' />
+                                        </div>
+                                        {   // Nếu mảng có dữ liệu thì map ra các hình ảnh của sản phẩm
+                                            arr ? arr.map((item, index) => {
+                                                return (
+                                                    <div key={index} className="zoom">
+                                                        <img src={item} alt='imageProduct' />
+                                                    </div>
+                                                )
+                                            })
+                                                // Nếu không thì cho mảng trống 
+                                                : <div>{arr = []}</div>
+                                        }
+                                    </Carousel>
+                                    <Row className="mt-2">
+                                        <h1>{arrDetailProduct.Name}</h1>
+                                    </Row>
+                                    <hr />
+                                    <Row className="mt-2">
+                                        Giá niêm yết : <h3><del>{arrDetailProduct.BuyPrice ? arrDetailProduct.BuyPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.BuyPrice} VNĐ</del></h3>
+                                    </Row>
+                                    <Row className="mt-2">
+                                        Giá giảm: <h3><span className="promotion-price">{arrDetailProduct.PromotionPrice ? arrDetailProduct.PromotionPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : arrDetailProduct.PromotionPrice} VNĐ</span></h3>
+                                    </Row>
+                                    <Row className="mt-2 text-center">
+                                        <Button style={{ width: 42 }} onClick={() => setCount(count + 1)}>
+                                            <AddIcon />
+                                        </Button>
+                                        <Input value={count} className='text-center' style={{ width: 45 }} readOnly></Input>
+                                        <Button style={{ width: 42 }} onClick={setCountDecrease}>
+                                            <RemoveIcon />
+                                        </Button>
+                                    </Row>
+                                    <Row className="mt-2">
+
+                                        {
+                                            idUser ?
+                                                <>
+                                                    {
+                                                        count < arrDetailProduct.Quantity ?
+                                                            <Button style={{ width: 150 }} id='btnButton1' className='btn-danger' onClick={onClickAddCartByCustomerId}>Thêm vào giỏ</Button>
+                                                            :
+                                                            <>
+                                                                <pre>(Hết hàng)</pre>
+                                                                <Button style={{ width: 150 }} id='btnButton1'  >Hết hàng</Button>
+                                                            </>
+
+                                                    }
+                                                </>
+                                                // <Link to={"/cart"} className="btn btn-danger" style={{ maxWidth: 150 }}>Thêm vào giỏ</Link>
+                                                :
+                                                <Link to={"/login"} className="btn btn-danger" style={{ width: 150 }}>Thêm vào giỏ</Link>
+                                        }
+                                    </Row>
+                                </Col>
+                            </>
+                    }
+
                 </Row>
                 <ToastContainer />
             </div>

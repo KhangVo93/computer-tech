@@ -5,6 +5,7 @@ import ViewAllComponent from './ViewAll';
 import { useEffect, useState } from 'react'
 import { Button, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import TypeProductComponent from './TypeProductComponent';
 function HomepageContent({ dataArr, setPage, page, nopage, arrNew }) {
 
     const loadDataByBrandHot = () => {
@@ -36,6 +37,7 @@ function HomepageContent({ dataArr, setPage, page, nopage, arrNew }) {
     return (
         <>
             <Carousel dataArr={loadDataByBrandHot()} />
+            <TypeProductComponent />
             <LastestProducts dataArrHot={loadDataByBrandHot()} dataArrNew={arrNew} />
             <PaginationComponent nopage={nopage} page={page} setPage={setPage} />
             <ViewAllComponent />

@@ -15,12 +15,7 @@ function LastestProductsComponent({ dataArrHot, dataArrNew }) {
     return (
         <>
             <div>
-                <Row className="p-4">
-                    <Col className="text-center">
-                        <h2><b>Danh mục sản phẩm</b></h2>
-                    </Col>
-                </Row>
-                <Row>
+                <Row className="p-2 mt-4">
                     <Col style={{ textAlign: 'left' }}>
                         <Input value={"SẢN PHẨM HOT"} style={{ maxWidth: 200, textAlign: 'center', backgroundColor: 'red', color: 'white' }} readOnly />
                     </Col>

@@ -142,3 +142,8 @@
   .back-to-top:hover {
     background: red;
   }
+
+  .typeProduct {
+    display: inline-block;
+    border: solid 1px;
+  }

@@ -13,7 +13,11 @@ function BreadcrumbProductDetail({ arr }) {
             case 'keyboard': setTypeProduct('Bàn phím'); break;
             case 'headphone': setTypeProduct('Tai nghe'); break;
             case 'case': setTypeProduct('Case máy tính'); break;
-            case 'mainboard': setTypeProduct('Mainboard'); break;
+            case 'mainboard': setTypeProduct('Bộ vi xử lý'); break;
+            case 'ram': setTypeProduct('Ram máy tính'); break;
+            case 'table': setTypeProduct('Bàn/ ghế gaming'); break;
+            case 'laptop': setTypeProduct('Laptop'); break;
+            case 'speaker': setTypeProduct('Loa máy tính'); break;
         }
     }, [arr])
     return (

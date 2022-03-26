@@ -49,7 +49,7 @@ const Header = ({ objResult, logoutGoogle, cartLength, idUser }) => {
                                         onChange={onChangeSearch}
                                         style={BarStyling}
                                         key="random1"
-                                        placeholder={"search product"}
+                                        placeholder={"Bạn muốn tìm gì..."}
                                     />
                                 </Col>
                                 <Col>
@@ -90,11 +90,11 @@ const Header = ({ objResult, logoutGoogle, cartLength, idUser }) => {
                                                 <b>{objResult.displayName || objResult.FullName}</b>
                                                 <br />
                                                 <Link to={`/user/${idUser}`} style={{ textDecoration: 'none', color: 'black', marginTop: 10, paddingLeft: 15 }}>
-                                                    <InfoIcon /> Infor
+                                                    <InfoIcon /> Thông tin
                                                 </Link>
                                                 <br />
                                                 <Link to={`/statusOrder`} style={{ textDecoration: 'none', color: 'black', marginTop: 10, paddingLeft: 15 }}>
-                                                    <ReorderIcon /> Orders
+                                                    <ReorderIcon /> Đơn hàng
                                                 </Link>
                                                 <hr />
                                                 <a role='button' href='/#' onClick={logout} style={{ textDecoration: 'none' }}>

@@ -34,7 +34,7 @@ const TypeProductComponent = () => {
                 </Col>
                 <Col className="mt-2 p-2 text-center" style={{ borderStyle: 'outset' }}>
                     <Link to={'/productByType/mouse'} style={{ textDecoration: 'none', color: 'black' }}>
-                        <img src="https://cdn-icons.flaticon.com/png/512/3412/premium/3412115.png?token=exp=1648299683~hmac=43fd832674286771abe5ee965d188b67" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
+                        <img src="https://cdn-icons-png.flaticon.com/512/7181/7181156.png" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
                         <h5>Chuột</h5>
                     </Link>
                 </Col>
@@ -78,13 +78,13 @@ const TypeProductComponent = () => {
                 </Col>
                 <Col className="mt-2 p-2 text-center" style={{ borderStyle: 'outset' }}>
                     <Link to={'/productByType/speaker'} style={{ textDecoration: 'none', color: 'black' }}>
-                        <img src="https://cdn-icons.flaticon.com/png/512/2061/premium/2061087.png?token=exp=1648300317~hmac=f3d6006b1938c8c0992f3d1e961900b8" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
+                        <img src="https://cdn-icons-png.flaticon.com/512/860/860367.png" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
                         <h5>Loa</h5>
                     </Link>
                 </Col>
                 <Col className="mt-2 p-2 text-center" style={{ borderStyle: 'outset' }}>
                     <Link to={'/productByType/laptop'} style={{ textDecoration: 'none', color: 'black' }}>
-                        <img src="https://cdn-icons.flaticon.com/png/512/2888/premium/2888701.png?token=exp=1648300346~hmac=3aae37348f802cdaad8449ce474162e2" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
+                        <img src="https://cdn-icons-png.flaticon.com/512/610/610021.png" alt='type' style={{ maxWidth: 90, maxHeight: 90 }} />
                         <h5>Laptop</h5>
                     </Link>
                 </Col>

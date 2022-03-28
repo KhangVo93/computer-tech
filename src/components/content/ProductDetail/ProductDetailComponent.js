@@ -5,11 +5,12 @@ import { Col, Row, Button, Breadcrumb } from "reactstrap";
 import ProductConnection from "./ProductConnection";
 import ProductDescription from "./ProductDescription";
 import ProductInformation from "./ProductInformation";
+import CommentProduct from "./CommentProduct";
 import BreadcrumbProductDetail from './BreadcrumbProductDetail'
 import axios from "axios";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, setArrCart }) {
+function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, aRRCart, setArrCart }) {
     // Lấy id sản phẩm trên url
     const { _id } = useParams();
 
@@ -19,6 +20,9 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
     // Mảng chứa các sản phẩm cùng loại
     const [aRRByType, setArrByType] = useState([])
 
+    const [cmt, setCmt] = useState('')
+
+    const [aRRComment, setArrComment] = useState([])
 
     // Hàm rest api lấy sản phẩm cùng loại
     const getDataByType = async (paramType) => {
@@ -46,6 +50,8 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
     // Khi render đầu tiên, rest api lấy data, đặt hàm if nếu có dữ liệu thì rest api lấy sản phẩm cùng loại
     useEffect(() => {
         getDataById()
+        restApiGetCommentProduct()
+
         if (aRR.length != 0) {
             getDataByType(aRR.Type)
         }
@@ -74,6 +80,7 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
             behavior: 'smooth' // for smoothly scrolling
         });
     };
+
     const [checkCollapse, setChecked] = useState(false)
 
     const onClickBtnOpenCollapse = () => {
@@ -81,6 +88,7 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
         document.getElementById('btnCloseCollapse').style.display = 'block'
         document.getElementById('btnOpenCollapse').style.display = 'none'
     }
+
     const onClickBtnCloseCollapse = () => {
         setChecked(false)
         window.scrollTo({
@@ -90,6 +98,36 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
         document.getElementById('btnCloseCollapse').style.display = 'none'
         document.getElementById('btnOpenCollapse').style.display = 'block'
     }
+
+    const restApiCreateCommentProduct = () => {
+        const body = {
+            body: {
+                text: cmt,
+                nameCustomer: objResult.displayName || objResult.FullName
+            },
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }
+        axios.post(`https://computer-tech-be.herokuapp.com/products/${_id}/${idUser}/createComment`, body.body, body.headers)
+            .then((data) => {
+                restApiGetCommentProduct()
+            })
+            .catch(error => {
+                console.log(error.response);
+            })
+    }
+
+    const restApiGetCommentProduct = () => {
+        axios.get(`https://computer-tech-be.herokuapp.com/products/${_id}/getComment`)
+            .then((data) => {
+                setArrComment(data.data.Comments)
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+    }
+
     return (
         <>
             <Row className="mt-2 p-2">
@@ -115,6 +153,9 @@ function ProductDetailComponent({ idUser, setCartLength, cartLength, aRRCart, se
                     </Button>
                 </Col>
                 <Col xs='5'></Col>
+            </Row>
+            <Row className="m-4 p-4">
+                <Col><CommentProduct cmt={cmt} setCmt={setCmt} restApiGetCommentProduct={restApiGetCommentProduct} aRRComment={aRRComment} restApiCreateCommentProduct={restApiCreateCommentProduct} /></Col>
             </Row>
             <Row className="m-4 p-4">
                 <ProductConnection arrByType={aRRByType} />

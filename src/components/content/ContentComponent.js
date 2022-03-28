@@ -129,7 +129,7 @@ function ContentComponent({ loginGoogle, objResult, idUser, setCartLength, aRRCa
                     <Route exact path="/search/:name" element={<ResultProductByName dataArr={dataProduct} />} />
                     <Route exact path="/login" element={<LoginComponent loginGoogle={loginGoogle} setUserName={setUserName} setPassword={setPassword} login={login} userName={userName} password={password} />} />
                     <Route exact path="/cart" element={<CartComponent objResult={objResult} setArrCart={setArrCart} aRRCart={aRRCart} idUser={idUser} setCartLength={setCartLength} />} />
-                    <Route exact path="/detailProduct/:_id" element={<ProductDetailComponent setArrCart={setArrCart} aRRCart={aRRCart} cartLength={cartLength} setCartLength={setCartLength} idUser={idUser} />} />
+                    <Route exact path="/detailProduct/:_id" element={<ProductDetailComponent objResult={objResult} setArrCart={setArrCart} aRRCart={aRRCart} cartLength={cartLength} setCartLength={setCartLength} idUser={idUser} />} />
                     <Route exact path="/statusOrder" element={<StatusOrderComponent idUser={idUser} />} />
                     <Route exact path="/statusOrderDetail/:orderId" element={<StatusOrderDetail />} />
                     <Route exact path="/user/:userId" element={<InformationUser />} />

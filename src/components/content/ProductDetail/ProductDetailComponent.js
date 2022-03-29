@@ -20,9 +20,10 @@ function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, 
     // Mảng chứa các sản phẩm cùng loại
     const [aRRByType, setArrByType] = useState([])
 
-    const [cmt, setCmt] = useState('')
+    const [cmt, setCmt] = useState(null)
 
     const [aRRComment, setArrComment] = useState([])
+    const [aRRReplyComment, setArrReplyComment] = useState([])
 
     // Hàm rest api lấy sản phẩm cùng loại
     const getDataByType = async (paramType) => {
@@ -99,11 +100,14 @@ function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, 
         document.getElementById('btnOpenCollapse').style.display = 'block'
     }
 
+    let dateCreate = new Date().toLocaleString();
+
     const restApiCreateCommentProduct = () => {
         const body = {
             body: {
                 text: cmt,
-                nameCustomer: objResult.displayName || objResult.FullName
+                nameCustomer: objResult.displayName || objResult.FullName,
+                dateCreate: dateCreate
             },
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -112,6 +116,7 @@ function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, 
         axios.post(`https://computer-tech-be.herokuapp.com/products/${_id}/${idUser}/createComment`, body.body, body.headers)
             .then((data) => {
                 restApiGetCommentProduct()
+                document.getElementById('inputCmt').value = ''
             })
             .catch(error => {
                 console.log(error.response);
@@ -122,6 +127,18 @@ function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, 
         axios.get(`https://computer-tech-be.herokuapp.com/products/${_id}/getComment`)
             .then((data) => {
                 setArrComment(data.data.Comments)
+                restApiGetReplyComment(data.data.Comments._id)
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+    }
+
+    const restApiGetReplyComment = (paramCommentId) => {
+        axios.get(`https://computer-tech-be.herokuapp.com/comment/${paramCommentId}/getComment`)
+            .then((data) => {
+                console.log(data.data.ReplyComments)
+                setArrReplyComment(data.data.ReplyComments)
             })
             .catch((err) => {
                 console.log(err.message)
@@ -155,7 +172,7 @@ function ProductDetailComponent({ objResult, idUser, setCartLength, cartLength, 
                 <Col xs='5'></Col>
             </Row>
             <Row className="m-4 p-4">
-                <Col><CommentProduct cmt={cmt} setCmt={setCmt} restApiGetCommentProduct={restApiGetCommentProduct} aRRComment={aRRComment} restApiCreateCommentProduct={restApiCreateCommentProduct} /></Col>
+                <Col><CommentProduct objResult={objResult} aRRReplyComment={aRRReplyComment} cmt={cmt} setCmt={setCmt} restApiGetCommentProduct={restApiGetCommentProduct} aRRComment={aRRComment} restApiCreateCommentProduct={restApiCreateCommentProduct} /></Col>
             </Row>
             <Row className="m-4 p-4">
                 <ProductConnection arrByType={aRRByType} />

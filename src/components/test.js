@@ -2,7 +2,9 @@ import React from 'react'
 
 export default function test() {
   return (
-    <div>test</div>
-  )//
-  //fsdfsdf
+    <>
+      <div>fdsfs</div>
+      <div>testfdfdfd</div>
+    </>)//
+  //fsdfsdffsdfdsffsdfsdfs
 }
